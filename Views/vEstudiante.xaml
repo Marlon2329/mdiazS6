@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mdiazS6.Views.vEstudiante"
+             Title="vEstudiante">
+    <VerticalStackLayout
+        Spacing="15"
+        Padding="20">
+        <Label
+            Text="Estudiantes"
+            FontSize="20"
+            TextColor="Blue"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+        
+        <Grid ColumnDefinitions="*,*,*,*" BackgroundColor="Yellow">
+            <Label Text="Codigo" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <Label Text="Nombre" Grid.Column="1" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <Label Text="Apellido" Grid.Column="2" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <Label Text="Edad" Grid.Column="3" FontAttributes="Bold" HorizontalOptions="Center"/>
+        </Grid>
+
+        
+        <CollectionView x:Name="ListaEstudiantes">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="5">
+                        <Label Text="{Binding codigo}" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="{Binding nombre}" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="{Binding apellido}" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="{Binding edad}" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>
