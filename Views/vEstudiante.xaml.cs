@@ -6,7 +6,7 @@ namespace mdiazS6.Views;
 
 public partial class vEstudiante : ContentPage
 {
-	private const string URL = "http://172.26.64.1/ws_estudiante/ws.php"; //ws
+	private const string URL = "http://172.24.80.1/ws_estudiante/ws.php"; //ws
 	private readonly HttpClient client = new HttpClient();
 	private ObservableCollection<Estudiante> _estud;
 
@@ -16,7 +16,7 @@ public partial class vEstudiante : ContentPage
 		List<Estudiante> objEstudiante = JsonConvert.DeserializeObject<List<Estudiante>>(content);
 
         _estud= new ObservableCollection<Estudiante>(objEstudiante);
-        ListaEstudiantes.ItemsSource = _estud;
+        listaEstudiante.ItemsSource = _estud;
 
     }
 
@@ -24,6 +24,23 @@ public partial class vEstudiante : ContentPage
     public vEstudiante()
 	{
 		InitializeComponent();
-		get();
+        get();
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        get();
+    }
+
+    private void btnAgregar_Clicked(object sender, EventArgs e)
+    {
+         Navigation.PushAsync(new vAgregarEstudiante());
+    }
+
+    private void listaEstudiante_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        var objEstudiante = (Estudiante)e.SelectedItem;
+        Navigation.PushAsync(new vActEliminar(objEstudiante));
+    }
 }

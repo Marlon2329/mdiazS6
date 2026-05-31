@@ -3,36 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mdiazS6.Views.vEstudiante"
              Title="vEstudiante">
-    <VerticalStackLayout
-        Spacing="15"
-        Padding="20">
-        <Label
-            Text="Estudiantes"
-            FontSize="20"
-            TextColor="Blue"
-            VerticalOptions="Center"
-            HorizontalOptions="Center" />
-        
-        <Grid ColumnDefinitions="*,*,*,*" BackgroundColor="Yellow">
-            <Label Text="Codigo" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Center"/>
-            <Label Text="Nombre" Grid.Column="1" FontAttributes="Bold" HorizontalOptions="Center"/>
-            <Label Text="Apellido" Grid.Column="2" FontAttributes="Bold" HorizontalOptions="Center"/>
-            <Label Text="Edad" Grid.Column="3" FontAttributes="Bold" HorizontalOptions="Center"/>
-        </Grid>
+    <VerticalStackLayout Spacing="20" Padding="15">
+            <Label Text="Estudiantes" FontSize="20" TextColor="Blue" VerticalOptions="Center" HorizontalOptions="Center" />
 
-        
-        <CollectionView x:Name="ListaEstudiantes">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="5">
-                        <Label Text="{Binding codigo}" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Text="{Binding nombre}" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Text="{Binding apellido}" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Text="{Binding edad}" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            <Grid BackgroundColor="#FFFF00" HeightRequest="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-    </VerticalStackLayout>
+                <Border Stroke="Black" Grid.Column="0">
+                    <Label Text="Codigo" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                </Border>
+                <Border Stroke="Black" Grid.Column="1">
+                    <Label Text="Nombre" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                </Border>
+                <Border Stroke="Black" Grid.Column="2">
+                    <Label Text="Apellido" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                </Border>
+                <Border Stroke="Black"  Grid.Column="3">
+                    <Label Text="Edad" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                </Border>
+            </Grid>
+
+            <ListView x:Name="listaEstudiante" ItemSelected="listaEstudiante_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid HeightRequest="30">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Border Stroke="Black" StrokeThickness="1" Grid.Column="0">
+                                    <Label Text="{Binding codigo}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                                </Border>
+
+                                <Border Stroke="Black" Grid.Column="0">
+                                    <Label Text="{Binding codigo}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                                </Border>
+                                <Border Stroke="Black" Grid.Column="1">
+                                    <Label Text="{Binding nombre}" VerticalOptions="Center" Margin="5,0,0,0" TextColor="Black"/>
+                                </Border>
+                                <Border Stroke="Black" Grid.Column="2">
+                                    <Label Text="{Binding apellido}" VerticalOptions="Center" Margin="5,0,0,0" TextColor="Black"/>
+                                </Border>
+                                <Border Stroke="Black" StrokeThickness="1" Grid.Column="3">
+                                    <Label Text="{Binding edad}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                                </Border>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="btnAgregar" Text="Agregar Estudiante" Clicked="btnAgregar_Clicked"/>
+
+        </VerticalStackLayout>
+
 </ContentPage>
